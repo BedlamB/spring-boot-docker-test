@@ -31,7 +31,7 @@ pipeline {
 
       stage('Run with Docker') {
           steps {
-                    sh 'docker run -p 8080:8080 ${REPOSITORY_TAG}'
+            sh 'docker run -p 8080:8080 ${REPOSITORY_TAG}'
           }
       }
    }
