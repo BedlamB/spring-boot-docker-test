@@ -29,9 +29,9 @@ pipeline {
          }
       }
 
-      stage('Run with Docker') {
+        stage('Deploy to Cluster') {
           steps {
-            sh 'docker run -p 8080:8080 ${REPOSITORY_TAG}'
+            sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
           }
       }
    }

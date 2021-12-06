@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-docker-test
+spec:
+  selector:
+    matchLabels:
+      app: spring-boot-docker-test
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: spring-boot-docker-test
+    spec:
+      containers:
+      - name: spring-boot-docker-test
+        image: spring-boot-docker-test
+        imagePullPolicy: Never
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot-docker-test
+
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: spring-boot-docker-test
+
+  ports:
+    - name: http
+      port: 8080
+      nodePort: 30034
+  
+  type: NodePort
+
+
+
+
+
+          
