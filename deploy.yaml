@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: spring-boot-docker-test
-        image: spring-boot-docker-test
+        image: ${REPOSITORY_TAG}
         imagePullPolicy: Never
 
 ---
